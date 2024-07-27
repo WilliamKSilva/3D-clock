@@ -18,6 +18,20 @@ public class Clock : MonoBehaviour
     [SerializeField]
     bool startFromCurrentTime;
 
+    void updateFromCurrentTime()
+    {
+        // Local rotation is relative to the parent object
+        DateTime time = DateTime.Now;
+        int hour = time.Hour;
+        hoursPivot.localRotation = Quaternion.Euler(0f, 0f, hour * hoursToDegrees);
+
+        int minute = time.Minute;
+        minutesPivot.localRotation = Quaternion.Euler(0f, 0f, minute * minutesToDegrees);
+
+        int seconds = time.Second;
+        secondsPivot.localRotation = Quaternion.Euler(0f, 0f, seconds * secondsToDegrees);
+    }
+
     void updateFromZero()
     {
         // Update seconds
@@ -41,24 +55,14 @@ public class Clock : MonoBehaviour
         }
     }
 
-    void updateFromCurrentTime() {
-        // Local rotation is relative to the parent object
-        DateTime time = DateTime.Now;
-        int hour = time.Hour;
-        hoursPivot.localRotation = Quaternion.Euler(0f, 0f, hour * hoursToDegrees);
-
-        int minute = time.Minute;
-        minutesPivot.localRotation = Quaternion.Euler(0f, 0f, minute * minutesToDegrees);
-
-        int seconds = time.Second;
-        secondsPivot.localRotation = Quaternion.Euler(0f, 0f, seconds * secondsToDegrees);
-    }
-
     void Update()
     {
-        if (startFromCurrentTime) {
+        if (startFromCurrentTime)
+        {
             updateFromCurrentTime();
-        } else {
+        }
+        else
+        {
             updateFromZero();
         }
     }
