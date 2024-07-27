@@ -1265,6 +1265,7 @@ MonoBehaviour:
   hoursPivot: {fileID: 333691466}
   minutesPivot: {fileID: 363352503}
   secondsPivot: {fileID: 1834345386}
+  startFromCurrentTime: 1
 --- !u!1 &1834345385
 GameObject:
   m_ObjectHideFlags: 0
